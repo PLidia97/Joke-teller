@@ -26,8 +26,20 @@ async function getDataFromApi() {
     console.log("Eroare Api: " + err);
   }
   deliverJoke(joke);
+  tellMeAJoke(joke);
 }
 
-getDataFromApi();
+function tellMeAJoke(joke) {
+  VoiceRSS.speech({
+    key: "5ff4b1b6ab8143f488a977bc3a2f2a9c",
+    src: joke,
+    hl: "en-us",
+    v: "John",
+    r: 0,
+    c: "mp3",
+    f: "44khz_16bit_stereo",
+    ssml: false,
+  });
+}
 
 btn.addEventListener("click", getDataFromApi);
